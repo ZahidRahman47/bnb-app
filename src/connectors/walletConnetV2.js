@@ -7,12 +7,12 @@ export const [walletConnectV2, hooks] = initializeConnector(
       actions,
       options: {
         projectId: "fe76d54c3385e26a8188e9ff4f618ae0",
-        chains: [56],
-        optionalChains: [56],
+        chains: [97],
+        optionalChains: [97],
         showQrModal: true,
-        rpcMap: {
-          56: "https://bsc-dataseed.binance.org/",
-        },
+        // rpcMap: {
+        //   97: "https://bnb-testnet.g.alchemy.com/v2/_CvIu4YdUXqicospC3JG4kE5NZsX8Sjl",
+        // },
         
         
       },

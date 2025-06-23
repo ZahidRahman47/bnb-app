@@ -7,14 +7,14 @@
 export const setupNetwork = async () => {
     const provider = (window).ethereum
     if (provider) {
-      const chainId = 56
+      const chainId = 97
           // const chainId = 4
       try {
         await provider.request({
           method: 'wallet_switchEthereumChain',
           params: [
             {
-              chainId: `0x${chainId.toString(56)}`,
+              chainId: `0x${chainId.toString()}`,
               // chainName: 'Rinkeby Smart Chain TestNet',
               // nativeCurrency: {
               //   name: 'ETH',
