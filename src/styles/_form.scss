@@ -1,0 +1,42 @@
+@import "./variables";
+
+.send-token-form {
+  background: $background;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    box-sizing: border-box; // ensures padding doesn't add extra width/height
+    appearance: none; // optional: removes native styling from select (good for custom styling)
+    font-size: 1rem;
+  }
+
+  .send-btn {
+    width: 100%;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+    }
+  }
+}
