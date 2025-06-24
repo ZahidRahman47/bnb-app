@@ -2,11 +2,10 @@ import React from "react";
 import "../styles/_header.scss";
 import { useWeb3React } from "@web3-react/core";
 import useAuth from "../hooks/useAuth";
-// import logo from "../../public/logo192.png";
 
 const Header = ({ onConnectClick }) => {
   const { account } = useWeb3React();
-  const { login, logout } = useAuth();
+  const { logout } = useAuth();
 
   const disconnectWallet = async () => {
     const connectorId = window?.localStorage?.getItem("connectorId");
@@ -16,7 +15,6 @@ const Header = ({ onConnectClick }) => {
   };
   return (
     <header className="header">
-      {/* <img src={logo} alt="Logo" className="logo" /> */}
 
      {account?  <button className="connect-btn" onClick={disconnectWallet}>
         Disconnect Wallet

@@ -135,3 +135,16 @@ export const useDebounce = (value, delay = 700) => {
 
     return debouncedValue;
 };
+
+
+export const getTokenContractAddress = (symbol) => {
+    switch (symbol.toLowerCase()) {
+        case "usdt":
+            return "0xA8Bb8a76bc177b49aD1C20c088385B7Fe6270B4B"; // USDT address
+        case "mtk":
+            return "0xA8Bb8a76bc177b49aD1C20c088385B7Fe6270B4B"; // MTK address
+        // Add other tokens here if needed
+        default:
+            throw new Error("Unknown token selected");
+    }
+};
