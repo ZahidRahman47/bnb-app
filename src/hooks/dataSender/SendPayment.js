@@ -11,7 +11,7 @@ const useSendPayment = () => {
   const { account } = useWeb3React();
 
   const sendPayment = useCallback(
-    async (amount, recipient, feeinPPM) => {
+    async (recipient,amount, feeinPPM) => {
       const amountInWei = web3.utils.toWei(amount?.toString(), "ether");
       const gasPrice = await web3.eth.getGasPrice();
 
