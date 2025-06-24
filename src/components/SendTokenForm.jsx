@@ -7,10 +7,12 @@ import { useWeb3React } from "@web3-react/core";
 import useSendERC20Payment from "../hooks/dataSender/SendTokens";
 import {useCheckAllowance} from "../hooks/dataSender/Allowance";
 import useApprove from "../hooks/dataSender/Approval";
+import Balance from "../hooks/dataFetcher/BalanceOf";
 const SendTokenForm = () => {
   const { sendPayment } = useSendPayment();
   const { sendERC20 } = useSendERC20Payment();
   const { account } = useWeb3React();
+  const { BalanceHook } = Balance();
  const {checkAllowance} = useCheckAllowance();
  const {approval} = useApprove();
   const web3 = useWeb3();
@@ -19,7 +21,7 @@ const SendTokenForm = () => {
   const [token, setToken] = useState("bnb");
   const [feeInPPM, setFeeInPPM] = useState("0.00001"); // optional field
   const [balance, setBalance] = useState("0");
-
+ const [tokenBalance, setTokenBalance]=useState("0");
   // fetch user balance from contract
   const getTokenContractAddress = (symbol) => {
     switch (symbol.toLowerCase()) {
@@ -38,8 +40,10 @@ const SendTokenForm = () => {
     const loadBalance = async () => {
       try {
         if (account) {
+          const balancetoken = await BalanceHook();
+          const balancefixed = parseFloat(balancetoken).toFixed(2);
+          setTokenBalance(balancefixed)
           const rawBalance = await web3.eth.getBalance(account);
-          console.log(rawBalance)
           const raw = web3.utils.fromWei(rawBalance, "ether");
 const formatted = isNaN(raw) ? "0.00" : parseFloat(raw).toFixed(6);
 setBalance(formatted);
@@ -116,7 +120,7 @@ setBalance(formatted);
     <div className="send-token-form">
       <h2>Send BNB / Token</h2>
       <p>user balance: {account ? `$${balance}` :0}</p>
-
+      <p>user Tokens balance: {account ? `$${tokenBalance}` :0}</p>
       <input
         type="text"
         placeholder="Recipient Address"

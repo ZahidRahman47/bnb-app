@@ -6,7 +6,6 @@ import { getUsdtMethods } from "../../utils/contractHelpers"; // Rename this to 
 import { BNB_CONTRACT_ADDRESS, USDT_CONTRACT_ADDRESS } from "../../utils/Enviroment";
 
 export const useApprove = () => {
-  console.log('inside approved hook')
   const { account } = useWeb3React();
   const web3 = useWeb3();
 
